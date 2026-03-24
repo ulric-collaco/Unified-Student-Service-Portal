@@ -8,7 +8,6 @@ A modern, high-performance, and modular platform built to centralize student ser
 - **Notices**: Real-time academic and administrative notices with a built-in commenting system.
 - **Events**: Explore and register for campus events with live capacity tracking.
 - **Notifications**: Instant alerts for important updates.
-- **Profile**: Comprehensive view of academic performance (CGPA, Credits, etc.).
 
 ---
 
