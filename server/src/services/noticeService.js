@@ -99,4 +99,4 @@ const addComment = (noticeId, { user, text }) => {
   return comment;
 };
 
-module.exports = { getAllNotices, getNoticeById, addComment };
+export { getAllNotices, getNoticeById, addComment };

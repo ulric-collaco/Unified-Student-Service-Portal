@@ -104,4 +104,4 @@ const registerForEvent = (eventId, userId) => {
   return { success: true, message: "Registration successful", eventId: event.id };
 };
 
-module.exports = { getAllEvents, getEventById, registerForEvent };
+export { getAllEvents, getEventById, registerForEvent };

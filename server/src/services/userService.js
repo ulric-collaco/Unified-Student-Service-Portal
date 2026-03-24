@@ -80,4 +80,4 @@ const markAllAsRead = () => {
 
 const getUnreadCount = () => notifications.filter((n) => !n.read).length;
 
-module.exports = { getUserProfile, getNotifications, markAsRead, markAllAsRead, getUnreadCount };
+export { getUserProfile, getNotifications, markAsRead, markAllAsRead, getUnreadCount };
