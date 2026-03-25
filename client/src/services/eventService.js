@@ -1,10 +1,31 @@
-// client/src/services/eventService.js
-// Thin wrapper — delegates to api.js (which now uses Firestore).
-import { api } from './api';
+const BASE_URL = '/api';
 
-const getEvents = () => api.getEvents();
-const getEventById = (id) => api.getEventById(id);
-const createEvent = (data) => api.createEvent(data);
-const deleteEvent = (id) => api.deleteEvent(id);
+export const getEvents = async () => {
+  const res = await fetch(`${BASE_URL}/events`);
+  return res.json();
+};
 
-export { getEvents, getEventById, createEvent, deleteEvent };
+export const createEvent = async (data) => {
+  const res = await fetch(`${BASE_URL}/events`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+};
+
+export const deleteEvent = async (id) => {
+  const res = await fetch(`${BASE_URL}/events/${id}`, {
+    method: 'DELETE',
+  });
+  return res.json();
+};
+
+export const registerEvent = async (id, userId = "student_001") => {
+  const res = await fetch(`${BASE_URL}/events/${id}/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ userId }),
+  });
+  return res.json();
+};

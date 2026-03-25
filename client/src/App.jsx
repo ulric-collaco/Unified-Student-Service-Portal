@@ -44,14 +44,11 @@ export default function App() {
 
       {/* Admin Routes */}
       <Route path="/admin/login" element={<AdminLogin />} />
-      <Route path="/admin" element={<AdminLayout />}>
-        <Route path="dashboard" element={<AdminDashboard />} />
-        <Route path="notices" element={<AdminNotices />} />
-        <Route path="notices/create" element={<CreateNotice />} />
-        <Route path="notices/edit/:id" element={<CreateNotice />} />
-        <Route path="events" element={<AdminEvents />} />
-        <Route path="events/create" element={<CreateEvent />} />
-        <Route path="seed" element={<AdminSeed />} />
+      <Route element={<AdminLayout />}>
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/notices" element={<AdminNotices />} />
+        <Route path="/admin/notices/create" element={<CreateNotice />} />
+        <Route path="/admin/notices/edit/:id" element={<CreateNotice />} />
       </Route>
     </Routes>
   );

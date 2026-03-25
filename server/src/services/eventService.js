@@ -5,6 +5,8 @@ let events = [
     description: "Join us for TechZen 2026 — our flagship annual tech festival.",
     date: "2026-04-05",
     location: "Main Auditorium",
+    seats: 500,
+    registeredUsers: ["student_001", "student_002"]
   },
   {
     id: "2",
@@ -12,6 +14,8 @@ let events = [
     description: "Industry veterans and alumni will share insights on cracking campus placements.",
     date: "2026-04-08",
     location: "Seminar Hall B",
+    seats: 200,
+    registeredUsers: ["student_001"]
   }
 ];
 
@@ -26,6 +30,8 @@ const createEvent = (data) => {
     description: data.description || "",
     date: data.date || "",
     location: data.location || "",
+    seats: Number(data.seats) || 0,
+    registeredUsers: [],
     ...data
   };
   events.push(newEvent);
@@ -38,13 +44,16 @@ const deleteEvent = (id) => {
   return events.length !== initialLength;
 };
 
-const registerForEvent = (id, userId) => {
-  const event = getEventById(id);
-  if (!event) return { success: false, message: 'Event not found' };
-  if (!event.registrations) event.registrations = [];
-  if (event.registrations.includes(userId)) return { success: false, message: 'Already registered' };
-  event.registrations.push(userId);
-  return { success: true, message: 'Registered successfully', eventId: id };
+const registerForEvent = (eventId, userId) => {
+  const event = events.find((e) => e.id === eventId);
+  if (!event) return { success: false, message: "Event not found" };
+  if (event.registeredUsers.includes(userId))
+    return { success: false, message: "Already registered" };
+  if (event.registeredUsers.length >= event.seats)
+    return { success: false, message: "Event is full" };
+  
+  event.registeredUsers.push(userId);
+  return { success: true, message: "Registration successful", eventId: event.id };
 };
 
 export { getAllEvents, getEventById, createEvent, deleteEvent, registerForEvent };
