@@ -100,7 +100,14 @@ export default function Events() {
       ) : (
         <div className="event-grid">
           {events.map(event => (
-            <EventCard key={event.id} event={event} onRegister={handleRegister} onDelete={handleDelete} isAdmin={isAdmin} />
+            <EventCard
+              key={event.id}
+              event={event}
+              onRegister={handleRegister}
+              onDelete={handleDelete}
+              isAdmin={isAdmin}
+              currentUserId={currentUserId}
+            />
           ))}
         </div>
       )}
